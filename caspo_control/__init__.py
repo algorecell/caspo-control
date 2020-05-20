@@ -24,10 +24,10 @@ class CaspoControl(object):
                 maxsize=maxsize)
         strategies = ReprogrammingStrategies()
         for control in interventions:
-            st = FromAny(PermanentPerturbation(control))
+            p = PermanentPerturbation(control)
+            st = FromCondition("input", p) if self.fixed else FromAny(p)
             strategies.add(st)
+        if self.fixed:
+            strategies.register_alias("input", self.fixed)
         return strategies
-
-def load(bn):
-    return CaspoControl(bn)
 
