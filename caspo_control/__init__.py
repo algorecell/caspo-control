@@ -1,5 +1,6 @@
-
-__version__ = "0.1"
+"""
+TODO
+"""
 
 from .iface import caspo_control
 
@@ -9,6 +10,9 @@ from algorecell_types import *
 from colomoto.minibn import BooleanNetwork
 
 class CaspoControl(object):
+    """
+    TODO
+    """
     def __init__(self, bn, fixed={}):
         self.bn = BooleanNetwork.auto_cast(bn)
         self.fixed = fixed
@@ -30,4 +34,10 @@ class CaspoControl(object):
         if self.fixed:
             strategies.register_alias("input", self.fixed)
         return strategies
+
+def load(bn, fixed={}):
+    """
+    TODO
+    """
+    return CaspoControl(bn, fixed)
 
